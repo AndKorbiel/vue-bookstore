@@ -11,7 +11,7 @@
     <b-card-text>
       {{ data.descirption }}
     </b-card-text>
-    <b-button href="#" variant="primary">Add to cart</b-button>
+    <b-button href="#" variant="primary" v-on:click="addToCart(data)">Add to cart</b-button>
   </b-card>
 </template>
 
@@ -19,7 +19,8 @@
   export default {
     name: 'ShopItem',
     props: {
-      data: Object
+      data: Object,
+      addToCart: Function
     }
   }
 </script>

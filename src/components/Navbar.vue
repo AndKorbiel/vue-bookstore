@@ -4,23 +4,27 @@
         <b-container fluid>
         <b-navbar-brand href="#">Vue Bookstore</b-navbar-brand>
         <b-navbar-nav class="ml-auto">
-          <b-badge pill variant="primary" class="cart-info" v-if="itemsInCart">{{ itemsInCart }}</b-badge>
-          <b-icon-cart font-scale="2"></b-icon-cart>
+          <b-badge pill variant="primary" class="cart-info" v-if="itemsInCart.length > 0">{{ itemsInCart.length }}</b-badge>
+          <b-icon-cart font-scale="2" v-b-modal.cart-modal></b-icon-cart>
         </b-navbar-nav>
         </b-container>
       </b-navbar>
+      <CartModal :itemsInCart="itemsInCart" />
   </div>
 </template>
 
 <script>
-  import { BIconCart } from 'bootstrap-vue'
+  import { BIconCart } from 'bootstrap-vue';
+  import CartModal from './CartModal';
+
   export default {
     name: 'CustomNavbar',
     components: {
-      BIconCart
+      BIconCart,
+      CartModal
     },
     props: {
-      itemsInCart: Number
+      itemsInCart: Array
     }
   }
 </script>

@@ -4,8 +4,8 @@
     <b-container>
       <b-row>
         <h1>{{message}}</h1>
-        <b-col col xs="6" sm="6" md="4" lg="3" v-for="(item) in availableItems" :key="item.id"  >
-          <ShopItem :data="item"/>
+        <b-col col xs="6" sm="6" md="4" lg="3" v-for="item in availableItems" :key="item.id"  >
+          <ShopItem :data="item" :addToCart="addToCart"/>
         </b-col>
       </b-row>
     </b-container>
@@ -31,7 +31,7 @@ export default {
   },
   data() {
     return {
-      itemsInCart: 1,
+      itemsInCart: [],
       availableItems: availableItems,
       message: 'Hello world!'
     }
@@ -43,6 +43,9 @@ export default {
     },
     changeMessage() {
       this.message = 'New message'
+    },
+    addToCart(item) {
+      this.itemsInCart.push(item)
     }
   }
 }
