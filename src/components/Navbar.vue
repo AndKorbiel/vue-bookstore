@@ -4,7 +4,7 @@
         <b-container fluid>
         <b-navbar-brand href="#">Vue Bookstore</b-navbar-brand>
         <b-navbar-nav class="ml-auto">
-          <b-badge pill variant="primary" class="cart-info" v-if="itemsInCart.length > 0">{{ itemsInCart.length }}</b-badge>
+          <b-badge pill variant="primary" class="cart-info" v-if="itemsInCart.length > 0">{{ amountOfItemsInCart }}</b-badge>
           <b-icon-cart font-scale="2" v-b-modal.cart-modal></b-icon-cart>
         </b-navbar-nav>
         </b-container>
@@ -25,6 +25,15 @@
     },
     props: {
       itemsInCart: Array
+    },
+    computed: {
+      amountOfItemsInCart() {
+        let temp = 0;
+        this.itemsInCart.forEach(el => {
+          temp = temp + el.quantity
+        })
+        return temp
+      }
     }
   }
 </script>
