@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-modal id="cart-modal" title="Cart">
-      <ul v-for="item in itemsInCart" :key="item.id">
+      <ul v-for="item in this.allItemsInCart" :key="item.id">
         <li>{{ item.title }}</li>
         <li>${{ item.price }}</li>
         <li>{{ item.quantity }}</li>
@@ -11,10 +11,12 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
+
   export default {
     name: 'CartModal',
-    props: {
-      itemsInCart: Array
+    computed: {
+      ...mapGetters(['allItemsInCart'])
     }
   }
 </script>

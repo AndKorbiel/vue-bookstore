@@ -9,7 +9,7 @@
         </b-navbar-nav>
         </b-container>
       </b-navbar>
-      <CartModal :itemsInCart="itemsInCart" />
+      <CartModal />
   </div>
 </template>
 
