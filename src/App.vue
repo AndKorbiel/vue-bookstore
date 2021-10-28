@@ -29,7 +29,7 @@ export default {
   data() {
     return {
       isLoaded: false,
-      message: 'Hello world!'
+      message: 'Welcome to our extended bookstore'
     }
   },
   computed: {
