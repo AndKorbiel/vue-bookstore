@@ -13,8 +13,8 @@
           <p>Quantity: <b>{{ item.quantity }}</b></p>
           <p>Total: <b>${{item.price * item.quantity}}</b></p>
           <div class="action-row">
-            <b-button>-</b-button>
-            <b-button>+</b-button>
+            <b-button v-on:click="removeFromCart(item)">-</b-button>
+            <b-button v-on:click="addToCart(item)">+</b-button>
           </div>
         </b-card>
       </div>
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
+  import { mapGetters, mapMutations } from 'vuex';
 
   export default {
     name: 'CartModal',
@@ -46,6 +46,15 @@
           temp = temp + item.quantity
         })
         return temp
+      }
+    },
+    methods: {
+      ...mapMutations((['addItemToCart', 'removeItemFromCart'])),
+      addToCart(item) {
+        this.addItemToCart(item)
+      },
+      removeFromCart(item) {
+        this.removeItemFromCart(item)
       }
     }
   }

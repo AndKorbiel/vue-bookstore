@@ -38,7 +38,18 @@ const mutations = {
         }
         
         return state.itemsInCart = currentState
+    },
+    removeItemFromCart: (state, item) => {
+        let currentState = state.itemsInCart;
+        let isInCart = currentState.filter((el) => el.id === item.id)
 
+        if (isInCart[0].quantity > 1) {
+            --isInCart[0].quantity
+        } else {
+            currentState = currentState.filter((el) => el.id !== item.id)
+        }
+
+        return state.itemsInCart = currentState
     }
 };
 
